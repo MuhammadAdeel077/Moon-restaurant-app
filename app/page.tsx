@@ -39,7 +39,7 @@ export default function Home() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 mb-8 sm:mb-10 lg:mb-12 font-light tracking-wide px-4"
             >
-              Where Taste Meets the Moonlight
+              We have Only Two Branches Naran And Besar
             </motion.p>
             
             <motion.div

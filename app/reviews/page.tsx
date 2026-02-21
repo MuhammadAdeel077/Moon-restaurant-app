@@ -1,61 +1,74 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import Icon from '@/components/Icon';
 
-const reviews = [
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
+interface Review {
+  _id: string;
+  name: string;
+  rating: number;
+  createdAt: string;
+  branch: string;
+  comment: string;
+  avatar: string;
+}
+
+// Fallback reviews for when API is not available
+const fallbackReviews: Review[] = [
   {
-    id: 1,
+    _id: '1',
     name: 'Ahmad Hassan',
     rating: 5,
-    date: 'January 15, 2026',
+    createdAt: '2026-01-15',
     branch: 'Naran',
     comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering. Highly recommended!',
     avatar: 'AH'
   },
   {
-    id: 2,
+    _id: '2',
     name: 'Fatima Khan',
     rating: 5,
-    date: 'January 10, 2026',
+    createdAt: '2026-01-10',
     branch: 'Besar',
     comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location. Will definitely come back!',
     avatar: 'FK'
   },
   {
-    id: 3,
+    _id: '3',
     name: 'Ali Raza',
     rating: 5,
-    date: 'January 5, 2026',
+    createdAt: '2026-01-05',
     branch: 'Naran',
     comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations. The mountain view is a bonus!',
     avatar: 'AR'
   },
   {
-    id: 4,
+    _id: '4',
     name: 'Sara Ahmed',
     rating: 4,
-    date: 'December 28, 2025',
+    createdAt: '2025-12-28',
     branch: 'Besar',
     comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable. The service could be a bit faster during peak hours.',
     avatar: 'SA'
   },
   {
-    id: 5,
+    _id: '5',
     name: 'Usman Malik',
     rating: 5,
-    date: 'December 20, 2025',
+    createdAt: '2025-12-20',
     branch: 'Naran',
     comment: 'Outstanding! From appetizers to desserts, everything was perfect. The chef really knows how to bring out authentic flavors.',
     avatar: 'UM'
   },
   {
-    id: 6,
+    _id: '6',
     name: 'Ayesha Tariq',
     rating: 5,
-    date: 'December 15, 2025',
+    createdAt: '2025-12-15',
     branch: 'Besar',
     comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our special requests. Thank you!',
     avatar: 'AT'
@@ -63,6 +76,8 @@ const reviews = [
 ];
 
 export default function ReviewsPage() {
+  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
+  const [averageRating, setAverageRating] = useState('4.8');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,21 +87,68 @@ export default function ReviewsPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Fetch reviews from API
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(`${API_URL}/reviews`);
+        const data = await response.json();
+        if (data.success && data.data.length > 0) {
+          setReviews(data.data);
+          setAverageRating(data.averageRating.toString());
+        }
+      } catch {
+        // Use fallback reviews if API fails
+        console.log('Using fallback reviews');
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
     
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', branch: '', rating: 5, comment: '' });
+    try {
+      const response = await fetch(`${API_URL}/reviews`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', branch: '', rating: 5, comment: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Something went wrong');
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      }
+    } catch {
+      setSubmitStatus('error');
+      setErrorMessage('Failed to submit review. Please try again.');
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const averageRating = (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1);
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
 
   return (
     <div className="pt-20">
@@ -130,7 +192,7 @@ export default function ReviewsPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {reviews.map((review, index) => (
-              <ScrollReveal key={review.id} delay={index * 0.1} direction="up">
+              <ScrollReveal key={review._id} delay={index * 0.1} direction="up">
                 <motion.div
                   whileHover={{ y: -5 }}
                   className="bg-white rounded-2xl p-5 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[rgb(var(--border))]"
@@ -145,7 +207,7 @@ export default function ReviewsPage() {
                           {review.name}
                         </h3>
                         <p className="text-xs sm:text-sm text-[rgb(var(--muted-foreground))]">
-                          {review.date}
+                          {formatDate(review.createdAt)}
                         </p>
                       </div>
                     </div>
@@ -287,6 +349,16 @@ export default function ReviewsPage() {
                 >
                   <Icon name="check" size={20} />
                   <span>Thank you for your review! It will be published soon.</span>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-3 sm:mt-4 p-3 sm:p-4 bg-red-50 border-2 border-red-500 rounded-xl text-red-700 text-center font-semibold text-sm sm:text-base"
+                >
+                  {errorMessage || 'Something went wrong. Please try again.'}
                 </motion.div>
               )}
             </form>

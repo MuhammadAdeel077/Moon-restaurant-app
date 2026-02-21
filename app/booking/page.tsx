@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import Icon from '@/components/Icon';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
 export default function BookingPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,6 +22,7 @@ export default function BookingPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,25 +31,48 @@ export default function BookingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        branch: '',
-        date: '',
-        time: '',
-        guests: '',
-        occasion: '',
-        message: '',
+    try {
+      const response = await fetch(`${API_URL}/bookings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          guests: parseInt(formData.guests),
+        }),
       });
-      
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          branch: '',
+          date: '',
+          time: '',
+          guests: '',
+          occasion: '',
+          message: '',
+        });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Something went wrong');
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      }
+    } catch {
+      setSubmitStatus('error');
+      setErrorMessage('Failed to submit booking. Please try again.');
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -281,6 +307,17 @@ export default function BookingPage() {
                 >
                   <Icon name="check" size={20} />
                   <span>Booking request submitted successfully! We&apos;ll contact you shortly.</span>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-red-50 border-2 border-red-500 rounded-xl text-red-700 text-center font-semibold text-sm sm:text-base"
+                >
+                  {errorMessage || 'Something went wrong. Please try again.'}
                 </motion.div>
               )}
             </form>
