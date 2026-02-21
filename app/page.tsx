@@ -30,7 +30,7 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl leading-tight">
               Moon Restaurant
             </h1>
             <motion.p
@@ -87,7 +87,7 @@ export default function Home() {
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
               Our Branches
             </h2>
             <p className="text-center text-[rgb(var(--muted-foreground))] text-base sm:text-lg mb-10 sm:mb-12 lg:mb-16 max-w-2xl mx-auto px-4">
@@ -112,7 +112,7 @@ export default function Home() {
                       <Icon name="location" size={20} />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-serif font-bold">Naran</h3>
+                    <h3 className="text-2xl sm:text-3xl font-bold">Naran</h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
@@ -144,7 +144,7 @@ export default function Home() {
                       <Icon name="location" size={20} />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-serif font-bold">Besar</h3>
+                    <h3 className="text-2xl sm:text-3xl font-bold">Besar</h3>
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
@@ -167,7 +167,7 @@ export default function Home() {
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-10 sm:mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[rgb(var(--primary))] mb-10 sm:mb-12 lg:mb-16">
               Why Choose Moon Restaurant
             </h2>
           </ScrollReveal>
@@ -203,26 +203,26 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[rgb(var(--primary))] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full blur-3xl" />
+      <section className="py-16 sm:py-20 lg:py-24 bg-[rgb(var(--muted))] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[rgb(var(--primary))] rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-[rgb(var(--secondary))] rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-[rgb(var(--primary))]">
               Ready for an Unforgettable Experience?
             </h2>
-            <p className="text-lg sm:text-xl mb-8 sm:mb-10 text-white/90 px-4">
-              Book your table today and taste the difference
+            <p className="text-base sm:text-lg mb-8 sm:mb-10 text-[rgb(var(--muted-foreground))] max-w-2xl mx-auto">
+              Book your table today and enjoy exceptional dining
             </p>
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:bg-[rgb(var(--secondary))] hover:text-white transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105"
             >
               <Icon name="calendar" size={24} />
-              <span>Reserve Your Table Now</span>
+              <span>Reserve Your Table</span>
             </Link>
           </ScrollReveal>
         </div>

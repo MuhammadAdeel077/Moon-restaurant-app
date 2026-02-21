@@ -59,7 +59,7 @@ export default function BookingPage() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-center">
               Group Booking
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-center text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
@@ -93,7 +93,7 @@ export default function BookingPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[rgb(var(--primary))] mb-6 sm:mb-8 text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[rgb(var(--primary))] mb-6 sm:mb-8 text-center">
                 Reserve Your Table
               </h2>
 

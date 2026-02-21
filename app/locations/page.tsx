@@ -47,7 +47,7 @@ export default function LocationsPage() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-center">
               Our Locations
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-center text-white/90 max-w-2xl mx-auto px-4">
@@ -81,7 +81,7 @@ export default function LocationsPage() {
                       <Icon name="location" size={24} className="text-white" />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-serif font-bold">{location.city}</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold">{location.city}</h2>
                   </div>
                 </div>
               </ScrollReveal>
@@ -89,7 +89,7 @@ export default function LocationsPage() {
               {/* Details */}
               <ScrollReveal direction={index % 2 === 0 ? 'right' : 'left'} delay={0.2}>
                 <div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[rgb(var(--primary))] mb-4 sm:mb-6">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(var(--primary))] mb-4 sm:mb-6">
                     {location.name}
                   </h2>
                   <p className="text-base sm:text-lg text-[rgb(var(--foreground))] leading-relaxed mb-6 sm:mb-8">
@@ -196,7 +196,7 @@ export default function LocationsPage() {
       {/* CTA Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">\n          <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               Can&apos;t Decide Which Location?
             </h2>
             <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 text-white/90 px-4">

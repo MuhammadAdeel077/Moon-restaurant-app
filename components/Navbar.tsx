@@ -41,7 +41,6 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group relative">
             <div className="relative w-10 h-10 sm:w-14 sm:h-14 transition-all duration-300 group-hover:scale-110 flex-shrink-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] rounded-full opacity-20 blur-md group-hover:opacity-30 transition-opacity" />
               <Image
                 src="/assets/logos/logo.png"
                 alt="Moon Restaurant"
@@ -50,7 +49,7 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg sm:text-2xl font-serif font-bold bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] bg-clip-text text-transparent leading-tight">
+              <span className="text-lg sm:text-2xl font-bold text-[rgb(var(--primary))] leading-tight">
                 Moon Restaurant
               </span>
               <span className="text-[0.6rem] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] text-[rgb(var(--muted-foreground))] uppercase font-medium hidden xs:block">
@@ -75,7 +74,7 @@ export default function Navbar() {
                   <span className="relative z-10 text-sm xl:text-base tracking-wide">
                     {link.label}
                   </span>
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] transition-all duration-300 group-hover:w-3/4 rounded-full" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[rgb(var(--primary))] transition-all duration-300 group-hover:w-3/4 rounded-full" />
                 </Link>
               </motion.div>
             ))}

@@ -34,7 +34,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="sm:col-span-2 lg:col-span-1"
           >
-            <h3 className="text-xl sm:text-2xl font-serif font-bold mb-3 sm:mb-4">Moon Restaurant</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Moon Restaurant</h3>
             <p className="text-white/90 mb-4 text-sm sm:text-base leading-relaxed">
               Where Taste Meets the Moonlight. Experience authentic Pakistani cuisine in a premium dining atmosphere.
             </p>

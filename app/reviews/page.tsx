@@ -98,7 +98,7 @@ export default function ReviewsPage() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-center">
               Customer Reviews
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-center text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
@@ -123,7 +123,7 @@ export default function ReviewsPage() {
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-8 sm:mb-10 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-[rgb(var(--primary))] mb-8 sm:mb-10 lg:mb-12">
               What Our Guests Say
             </h2>
           </ScrollReveal>
@@ -174,7 +174,7 @@ export default function ReviewsPage() {
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
               Share Your Experience
             </h2>
             <p className="text-center text-[rgb(var(--muted-foreground))] mb-6 sm:mb-8 text-sm sm:text-base">
