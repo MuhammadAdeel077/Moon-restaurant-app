@@ -163,41 +163,211 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      {/* Features Section - Alternating Layout */}
+      <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[rgb(var(--primary))] mb-10 sm:mb-12 lg:mb-16">
-              Why Choose Moon Restaurant
-            </h2>
+            <div className="text-center mb-16 sm:mb-20 lg:mb-24">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-block px-4 py-2 bg-[rgb(var(--primary))]/10 text-[rgb(var(--primary))] rounded-full text-sm font-semibold mb-4"
+              >
+                Our Excellence
+              </motion.span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(var(--primary))]">
+                Why Choose Moon Restaurant
+              </h2>
+            </div>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             {[
-              { icon: 'restaurant', title: 'Authentic Cuisine', desc: 'Traditional Pakistani flavors prepared by expert chefs' },
-              { icon: 'family', title: 'Family Friendly', desc: 'Spacious dining areas perfect for family gatherings' },
-              { icon: 'party', title: 'Group Bookings', desc: 'Special arrangements for celebrations and events' },
-              { icon: 'star', title: 'Premium Quality', desc: 'Fresh ingredients and highest quality standards' },
-              { icon: 'landscape', title: 'Scenic Locations', desc: 'Beautiful ambiance in picturesque settings' },
-              { icon: 'award', title: 'Excellent Service', desc: 'Attentive staff dedicated to your satisfaction' },
-            ].map((feature, index) => (
-              <ScrollReveal key={index} delay={index * 0.1} direction="up">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="text-center p-6 sm:p-8 rounded-2xl bg-white border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="text-[rgb(var(--primary))] mb-3 sm:mb-4 flex justify-center">
-                    <Icon name={feature.icon} size={48} />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-[rgb(var(--primary))] mb-2 sm:mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[rgb(var(--muted-foreground))]">
-                    {feature.desc}
-                  </p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+              { 
+                icon: 'restaurant', 
+                title: 'Authentic Cuisine', 
+                desc: 'Traditional Pakistani flavors prepared by expert chefs',
+                longDesc: 'Experience the rich tapestry of Pakistani culinary traditions, where every dish tells a story of generations of culinary mastery. Our chefs bring decades of expertise to create authentic recipes that transport you to the heart of Pakistan.',
+                image: '/assets/images/1.jpeg'
+              },
+              { 
+                icon: 'family', 
+                title: 'Family Friendly', 
+                desc: 'Spacious dining areas perfect for family gatherings',
+                longDesc: 'Create lasting memories with your loved ones in our warm and welcoming atmosphere. Our spacious interiors are designed to accommodate families of all sizes, ensuring comfort and joy for every generation.',
+                image: '/assets/images/2.jpeg'
+              },
+              { 
+                icon: 'party', 
+                title: 'Group Bookings', 
+                desc: 'Special arrangements for celebrations and events',
+                longDesc: 'From intimate gatherings to grand celebrations, we specialize in making your special occasions truly memorable. Our dedicated events team works closely with you to customize every detail of your perfect event.',
+                image: '/assets/images/3.jpeg'
+              },
+              { 
+                icon: 'star', 
+                title: 'Premium Quality', 
+                desc: 'Fresh ingredients and highest quality standards',
+                longDesc: 'We source only the finest ingredients, ensuring each plate exceeds expectations. Our commitment to quality means rigorous standards from kitchen to table, delivering excellence in every bite.',
+                image: '/assets/images/4.jpeg'
+              },
+              { 
+                icon: 'landscape', 
+                title: 'Scenic Locations', 
+                desc: 'Beautiful ambiance in picturesque settings',
+                longDesc: 'Dine amidst breathtaking natural beauty that enhances every meal. Our strategically chosen locations offer stunning mountain views and serene surroundings that make dining an unforgettable experience.',
+                image: '/assets/images/5.jpeg'
+              },
+              { 
+                icon: 'award', 
+                title: 'Excellent Service', 
+                desc: 'Attentive staff dedicated to your satisfaction',
+                longDesc: 'Our hospitality is legendary—warm, professional, and always attentive to your needs. Every team member is committed to ensuring your dining experience exceeds expectations from the moment you arrive.',
+                image: '/assets/images/1.jpeg'
+              },
+            ].map((feature, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div key={index} className="relative">
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 sm:gap-12 lg:gap-16`}
+                  >
+                    {/* Image Section */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: isEven ? -80 : 80, scale: 0.9 }}
+                      whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                      className="w-full lg:w-1/2"
+                    >
+                      <div className="relative group">
+                        {/* Decorative elements */}
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: 0.4 }}
+                          className={`absolute -z-10 w-full h-full bg-[rgb(var(--primary))]/20 rounded-2xl ${isEven ? '-right-4 -bottom-4 sm:-right-6 sm:-bottom-6' : '-left-4 -bottom-4 sm:-left-6 sm:-bottom-6'}`}
+                        />
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: 0.5 }}
+                          className={`absolute -z-20 w-3/4 h-3/4 bg-[rgb(var(--secondary))]/10 rounded-2xl ${isEven ? '-right-8 -bottom-8 sm:-right-12 sm:-bottom-12' : '-left-8 -bottom-8 sm:-left-12 sm:-bottom-12'}`}
+                        />
+                        
+                        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                          >
+                            <Image
+                              src={feature.image}
+                              alt={feature.title}
+                              width={600}
+                              height={450}
+                              className="w-full h-[280px] sm:h-[350px] lg:h-[400px] object-cover"
+                            />
+                          </motion.div>
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          
+                          {/* Floating icon badge */}
+                          <motion.div 
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.6, type: "spring", stiffness: 200 }}
+                            className={`absolute ${isEven ? '-right-4 sm:-right-6' : '-left-4 sm:-left-6'} -bottom-4 sm:-bottom-6 bg-[rgb(var(--primary))] p-4 sm:p-5 rounded-xl shadow-xl`}
+                          >
+                            <Icon name={feature.icon} size={32} className="text-white" />
+                          </motion.div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Text Section */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: isEven ? 80 : -80 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                      className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-4' : 'lg:pr-4'}`}
+                    >
+                      <div className="space-y-4 sm:space-y-6">
+                        <motion.h3 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.5 }}
+                          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[rgb(var(--primary))]"
+                        >
+                          {feature.title}
+                        </motion.h3>
+                        
+                        <motion.p 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.6 }}
+                          className="text-lg sm:text-xl text-[rgb(var(--secondary))] font-medium"
+                        >
+                          {feature.desc}
+                        </motion.p>
+                        
+                        <motion.p 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.7 }}
+                          className="text-base sm:text-lg text-[rgb(var(--muted-foreground))] leading-relaxed"
+                        >
+                          {feature.longDesc}
+                        </motion.p>
+                        
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.8 }}
+                        >
+                          <motion.button
+                            whileHover={{ scale: 1.05, x: 5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 text-[rgb(var(--primary))] font-semibold group"
+                          >
+                            <span>Learn More</span>
+                            <motion.span
+                              animate={{ x: [0, 5, 0] }}
+                              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              <Icon name="arrow" size={20} className="group-hover:translate-x-1 transition-transform" />
+                            </motion.span>
+                          </motion.button>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Decorative line between sections */}
+                  {index < 5 && (
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      className="hidden lg:block w-1/2 h-px bg-gradient-to-r from-transparent via-[rgb(var(--border))] to-transparent mx-auto mt-12 sm:mt-16 lg:mt-20"
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
