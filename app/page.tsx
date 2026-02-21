@@ -372,6 +372,125 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scrolling Reviews Section */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] overflow-hidden">
+        <ScrollReveal>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
+              What Our Guests Say
+            </h2>
+            <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto px-4">
+              Real experiences from our valued customers
+            </p>
+          </div>
+        </ScrollReveal>
+        
+        {/* First Row - Left to Right */}
+        <div className="relative mb-4 sm:mb-6">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-4 sm:gap-6"
+          >
+            {[
+              { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
+              { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
+              { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
+              { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
+              { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
+              { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
+              { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
+              { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
+              { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+            ].map((review, index) => (
+              <motion.div
+                key={`row1-${index}`}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="flex-shrink-0 w-[300px] sm:w-[350px] bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/20"
+              >
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
+                    {review.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{review.name}</h4>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="star" size={12} className={i < review.rating ? 'text-yellow-300' : 'text-white/30'} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/90 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                  &quot;{review.comment}&quot;
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Second Row - Right to Left */}
+        {/* <div className="relative">
+          <motion.div
+            animate={{ x: ['-50%', '0%'] }}
+            transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-4 sm:gap-6"
+          >
+            {[
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
+              { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
+              { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
+              { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
+              { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
+              { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
+              { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
+              { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
+              { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
+            ].map((review, index) => (
+              <motion.div
+                key={`row2-${index}`}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="flex-shrink-0 w-[300px] sm:w-[350px] bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/20"
+              >
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
+                    {review.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{review.name}</h4>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="star" size={12} className={i < review.rating ? 'text-yellow-300' : 'text-white/30'} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/90 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                  &quot;{review.comment}&quot;
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div> */}
+
+        {/* View All Reviews Link */}
+        <div className="text-center mt-8 sm:mt-12">
+          <Link
+            href="/reviews"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-[rgb(var(--primary))] rounded-full font-semibold text-sm sm:text-base shadow-lg hover:bg-white/90 transition-all duration-300 hover:scale-105"
+          >
+            <span>View All Reviews</span>
+            <Icon name="arrow" size={20} />
+          </Link>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[rgb(var(--muted))] relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">

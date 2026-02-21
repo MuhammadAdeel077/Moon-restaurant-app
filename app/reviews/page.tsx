@@ -293,6 +293,83 @@ export default function ReviewsPage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Scrolling Reviews Marquee */}
+      <section className="py-8 sm:py-12 bg-[rgb(var(--primary))] overflow-hidden">
+        <div className="mb-6 sm:mb-8 text-center">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
+            What People Are Saying
+          </h3>
+        </div>
+        
+        {/* First Row - Left to Right */}
+        <div className="relative mb-4 sm:mb-6">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-4 sm:gap-6"
+          >
+            {[...reviews, ...reviews].map((review, index) => (
+              <motion.div
+                key={`row1-${index}`}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="flex-shrink-0 w-[300px] sm:w-[350px] bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/20"
+              >
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
+                    {review.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{review.name}</h4>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="star" size={12} className={i < review.rating ? 'text-yellow-300' : 'text-white/30'} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/90 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                  &quot;{review.comment}&quot;
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Second Row - Right to Left */}
+        <div className="relative">
+          <motion.div
+            animate={{ x: ['-50%', '0%'] }}
+            transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-4 sm:gap-6"
+          >
+            {[...reviews.slice().reverse(), ...reviews.slice().reverse()].map((review, index) => (
+              <motion.div
+                key={`row2-${index}`}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="flex-shrink-0 w-[300px] sm:w-[350px] bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/20"
+              >
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
+                    {review.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{review.name}</h4>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="star" size={12} className={i < review.rating ? 'text-yellow-300' : 'text-white/30'} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/90 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                  &quot;{review.comment}&quot;
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
