@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import Icon from '@/components/Icon';
+import { toast } from 'sonner';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
@@ -21,8 +22,6 @@ export default function BookingPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,7 +30,6 @@ export default function BookingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setErrorMessage('');
     
     try {
       const response = await fetch(`${API_URL}/bookings`, {
@@ -45,10 +43,19 @@ export default function BookingPage() {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
+
       const data = await response.json();
 
-      if (data.success) {
-        setSubmitStatus('success');
+      if (data.success || response.ok) {
+        toast.success('Booking submitted successfully!', {
+          description: 'We\'ll contact you shortly to confirm your reservation.',
+          duration: 5000,
+        });
+        
+        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -60,16 +67,18 @@ export default function BookingPage() {
           occasion: '',
           message: '',
         });
-        setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
-        setSubmitStatus('error');
-        setErrorMessage(data.error || 'Something went wrong');
-        setTimeout(() => setSubmitStatus('idle'), 5000);
+        toast.error('Booking failed', {
+          description: data.error || data.message || 'Something went wrong. Please try again.',
+          duration: 5000,
+        });
       }
-    } catch {
-      setSubmitStatus('error');
-      setErrorMessage('Failed to submit booking. Please try again.');
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Booking error:', error);
+      toast.error('Failed to submit booking', {
+        description: 'Please check your connection and try again.',
+        duration: 5000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -297,29 +306,6 @@ export default function BookingPage() {
                   </>
                 )}
               </motion.button>
-
-              {/* Success Message */}
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base flex items-center justify-center gap-2"
-                >
-                  <Icon name="check" size={20} />
-                  <span>Booking request submitted successfully! We&apos;ll contact you shortly.</span>
-                </motion.div>
-              )}
-
-              {/* Error Message */}
-              {submitStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-red-50 border-2 border-red-500 rounded-xl text-red-700 text-center font-semibold text-sm sm:text-base"
-                >
-                  {errorMessage || 'Something went wrong. Please try again.'}
-                </motion.div>
-              )}
             </form>
           </ScrollReveal>
         </div>
