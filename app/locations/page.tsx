@@ -38,18 +38,18 @@ export default function LocationsPage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute top-10 right-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-center">
               Our Locations
             </h1>
-            <p className="text-xl text-center text-white/90 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-center text-white/90 max-w-2xl mx-auto px-4">
               Visit us at our premium locations in Naran and Besar
             </p>
           </ScrollReveal>
@@ -61,13 +61,13 @@ export default function LocationsPage() {
         <section
           key={location.id}
           id={location.id}
-          className={`py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-white to-[rgb(var(--muted))]'}`}
+          className={`py-12 sm:py-16 lg:py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-white to-[rgb(var(--muted))]'}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               {/* Image */}
               <ScrollReveal direction={index % 2 === 0 ? 'left' : 'right'}>
-                <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+                <div className="relative h-72 sm:h-80 lg:h-96 xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
                   <Image
                     src={location.image}
                     alt={location.name}
@@ -75,12 +75,12 @@ export default function LocationsPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-6 left-6">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-3xl">📍</span>
-                      <span className="text-sm font-semibold uppercase tracking-wider">Location</span>
+                      <span className="text-2xl sm:text-3xl">📍</span>
+                      <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
-                    <h2 className="text-4xl font-serif font-bold">{location.city}</h2>
+                    <h2 className="text-3xl sm:text-4xl font-serif font-bold">{location.city}</h2>
                   </div>
                 </div>
               </ScrollReveal>
@@ -88,15 +88,15 @@ export default function LocationsPage() {
               {/* Details */}
               <ScrollReveal direction={index % 2 === 0 ? 'right' : 'left'} delay={0.2}>
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-serif font-bold text-[rgb(var(--primary))] mb-6">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[rgb(var(--primary))] mb-4 sm:mb-6">
                     {location.name}
                   </h2>
-                  <p className="text-lg text-[rgb(var(--foreground))] leading-relaxed mb-8">
+                  <p className="text-base sm:text-lg text-[rgb(var(--foreground))] leading-relaxed mb-6 sm:mb-8">
                     {location.description}
                   </p>
 
                   {/* Features */}
-                  <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8">
                     {location.features.map((feature, i) => (
                       <motion.div
                         key={i}
@@ -104,10 +104,10 @@ export default function LocationsPage() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-[rgb(var(--muted))] rounded-lg"
+                        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 lg:px-4 py-2 bg-[rgb(var(--muted))] rounded-lg"
                       >
-                        <span className="text-green-600 font-bold">✓</span>
-                        <span className="text-sm font-medium text-[rgb(var(--foreground))]">
+                        <span className="text-green-600 font-bold text-sm sm:text-base">✓</span>
+                        <span className="text-xs sm:text-sm font-medium text-[rgb(var(--foreground))]">
                           {feature}
                         </span>
                       </motion.div>
@@ -115,46 +115,46 @@ export default function LocationsPage() {
                   </div>
 
                   {/* Contact Info */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">📍</span>
+                  <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-xl sm:text-2xl">📍</span>
                       <div>
-                        <p className="font-semibold text-[rgb(var(--primary))]">Address</p>
-                        <p className="text-[rgb(var(--foreground))]">{location.address}</p>
+                        <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Address</p>
+                        <p className="text-[rgb(var(--foreground))] text-sm sm:text-base">{location.address}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">📞</span>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-xl sm:text-2xl">📞</span>
                       <div>
-                        <p className="font-semibold text-[rgb(var(--primary))]">Phone</p>
-                        <a href={`tel:${location.phone}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors">
+                        <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Phone</p>
+                        <a href={`tel:${location.phone}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors text-sm sm:text-base">
                           {location.phone}
                         </a>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">✉️</span>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-xl sm:text-2xl">✉️</span>
                       <div>
-                        <p className="font-semibold text-[rgb(var(--primary))]">Email</p>
-                        <a href={`mailto:${location.email}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors">
+                        <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Email</p>
+                        <a href={`mailto:${location.email}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors text-sm sm:text-base break-all">
                           {location.email}
                         </a>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">⏰</span>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-xl sm:text-2xl">⏰</span>
                       <div>
-                        <p className="font-semibold text-[rgb(var(--primary))]">Hours</p>
-                        <p className="text-[rgb(var(--foreground))]">{location.hours}</p>
+                        <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Hours</p>
+                        <p className="text-[rgb(var(--foreground))] text-sm sm:text-base">{location.hours}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                     <Link
                       href="/booking"
-                      className="px-6 py-3 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-center text-sm sm:text-base"
                     >
                       📅 Book a Table
                     </Link>
@@ -162,7 +162,7 @@ export default function LocationsPage() {
                       href={`https://www.google.com/maps/search/${encodeURIComponent(location.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300"
+                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 text-center text-sm sm:text-base"
                     >
                       🗺️ Get Directions
                     </a>
@@ -173,7 +173,7 @@ export default function LocationsPage() {
 
             {/* Map */}
             <ScrollReveal delay={0.4}>
-              <div className="mt-12 rounded-3xl overflow-hidden shadow-2xl h-96">
+              <div className="mt-8 sm:mt-10 lg:mt-12 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-64 sm:h-80 lg:h-96">
                 <iframe
                   src={location.mapEmbed}
                   width="100%"
@@ -191,25 +191,25 @@ export default function LocationsPage() {
       ))}
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-4 sm:mb-6">
               Can&apos;t Decide Which Location?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 text-white/90 px-4">
               Both branches offer the same premium quality and exceptional service
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/booking"
-                className="px-8 py-4 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105"
               >
                 📅 Make a Reservation
               </Link>
               <a
                 href="tel:+92XXXXXXXXXX"
-                className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-base sm:text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105"
               >
                 📞 Call Us Now
               </a>

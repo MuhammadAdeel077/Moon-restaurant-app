@@ -51,20 +51,20 @@ export default function BookingPage() {
   return (
     <div className="pt-20">
       {/* Header Section */}
-      <section className="relative py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-center">
               Group Booking
             </h1>
-            <p className="text-xl text-center text-white/90 max-w-2xl mx-auto mb-8">
+            <p className="text-base sm:text-lg lg:text-xl text-center text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
               Reserve your perfect dining experience for groups and special occasions
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6">
               {[
                 { icon: '👥', text: 'Group Dining' },
                 { icon: '🎉', text: 'Special Events' },
@@ -76,9 +76,9 @@ export default function BookingPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full"
+                  className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full text-sm sm:text-base"
                 >
-                  <span className="text-2xl">{feature.icon}</span>
+                  <span className="text-xl sm:text-2xl">{feature.icon}</span>
                   <span className="font-medium">{feature.text}</span>
                 </motion.div>
               ))}
@@ -88,15 +88,15 @@ export default function BookingPage() {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-              <h2 className="text-3xl font-serif font-bold text-[rgb(var(--primary))] mb-8 text-center">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[rgb(var(--primary))] mb-6 sm:mb-8 text-center">
                 Reserve Your Table
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
@@ -109,7 +109,7 @@ export default function BookingPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="John Doe"
                   />
                 </div>
@@ -126,7 +126,7 @@ export default function BookingPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function BookingPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="+92-XXX-XXXXXXX"
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function BookingPage() {
                     value={formData.branch}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                   >
                     <option value="">Choose a branch</option>
                     <option value="naran">Naran Branch</option>
@@ -179,7 +179,7 @@ export default function BookingPage() {
                     value={formData.date}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ export default function BookingPage() {
                     value={formData.time}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                   />
                 </div>
 
@@ -212,7 +212,7 @@ export default function BookingPage() {
                     onChange={handleChange}
                     required
                     min="1"
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="5"
                   />
                 </div>
@@ -227,7 +227,7 @@ export default function BookingPage() {
                     name="occasion"
                     value={formData.occasion}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
                   >
                     <option value="">Select occasion</option>
                     <option value="birthday">Birthday</option>
@@ -240,7 +240,7 @@ export default function BookingPage() {
               </div>
 
               {/* Special Requests */}
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <label htmlFor="message" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
                   Special Requests
                 </label>
@@ -250,7 +250,7 @@ export default function BookingPage() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors resize-none text-sm sm:text-base"
                   placeholder="Any dietary restrictions or special arrangements?"
                 />
               </div>
@@ -261,7 +261,7 @@ export default function BookingPage() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : '📅 Confirm Booking'}
               </motion.button>
@@ -271,7 +271,7 @@ export default function BookingPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold"
+                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base"
                 >
                   ✓ Booking request submitted successfully! We&apos;ll contact you shortly.
                 </motion.div>
@@ -282,9 +282,9 @@ export default function BookingPage() {
       </section>
 
       {/* Info Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: '📞',
@@ -306,15 +306,15 @@ export default function BookingPage() {
               },
             ].map((info, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="text-center p-6 rounded-2xl border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] transition-colors">
-                  <div className="text-5xl mb-4">{info.icon}</div>
-                  <h3 className="text-xl font-bold text-[rgb(var(--primary))] mb-2">
+                <div className="text-center p-5 sm:p-6 rounded-2xl border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] transition-all duration-300 hover:shadow-lg">
+                  <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{info.icon}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[rgb(var(--primary))] mb-2">
                     {info.title}
                   </h3>
-                  <p className="text-[rgb(var(--muted-foreground))] mb-3">
+                  <p className="text-sm sm:text-base text-[rgb(var(--muted-foreground))] mb-2 sm:mb-3">
                     {info.desc}
                   </p>
-                  <p className="font-semibold text-[rgb(var(--primary))]">
+                  <p className="text-sm sm:text-base font-semibold text-[rgb(var(--primary))]">
                     {info.action}
                   </p>
                 </div>
