@@ -4,11 +4,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string; action: string } }
+  { params }: { params: Promise<{ id: string; action: string }> }
 ) {
   try {
     const body = await request.json();
-    const { id, action } = params;
+    const { id, action } = await params;
 
     const response = await fetch(`${API_URL}/admin/bookings/${id}/${action}`, {
       method: 'POST',
