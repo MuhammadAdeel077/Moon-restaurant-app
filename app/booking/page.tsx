@@ -1,0 +1,328 @@
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import ScrollReveal from '@/components/ScrollReveal';
+
+export default function BookingPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    branch: '',
+    date: '',
+    time: '',
+    guests: '',
+    occasion: '',
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        branch: '',
+        date: '',
+        time: '',
+        guests: '',
+        occasion: '',
+        message: '',
+      });
+      
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }, 1500);
+  };
+
+  return (
+    <div className="pt-20">
+      {/* Header Section */}
+      <section className="relative py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-center">
+              Group Booking
+            </h1>
+            <p className="text-xl text-center text-white/90 max-w-2xl mx-auto mb-8">
+              Reserve your perfect dining experience for groups and special occasions
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {[
+                { icon: '👥', text: 'Group Dining' },
+                { icon: '🎉', text: 'Special Events' },
+                { icon: '🍽️', text: 'Custom Menus' },
+                { icon: '⭐', text: 'Premium Service' },
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full"
+                >
+                  <span className="text-2xl">{feature.icon}</span>
+                  <span className="font-medium">{feature.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+              <h2 className="text-3xl font-serif font-bold text-[rgb(var(--primary))] mb-8 text-center">
+                Reserve Your Table
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                {/* Name */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    placeholder="+92-XXX-XXXXXXX"
+                  />
+                </div>
+
+                {/* Branch */}
+                <div>
+                  <label htmlFor="branch" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Select Branch *
+                  </label>
+                  <select
+                    id="branch"
+                    name="branch"
+                    value={formData.branch}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                  >
+                    <option value="">Choose a branch</option>
+                    <option value="naran">Naran Branch</option>
+                    <option value="besar">Besar Branch</option>
+                  </select>
+                </div>
+
+                {/* Date */}
+                <div>
+                  <label htmlFor="date" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Date *
+                  </label>
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                  />
+                </div>
+
+                {/* Time */}
+                <div>
+                  <label htmlFor="time" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Time *
+                  </label>
+                  <input
+                    type="time"
+                    id="time"
+                    name="time"
+                    value={formData.time}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                  />
+                </div>
+
+                {/* Number of Guests */}
+                <div>
+                  <label htmlFor="guests" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Number of Guests *
+                  </label>
+                  <input
+                    type="number"
+                    id="guests"
+                    name="guests"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    required
+                    min="1"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                    placeholder="5"
+                  />
+                </div>
+
+                {/* Occasion */}
+                <div>
+                  <label htmlFor="occasion" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                    Occasion
+                  </label>
+                  <select
+                    id="occasion"
+                    name="occasion"
+                    value={formData.occasion}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors"
+                  >
+                    <option value="">Select occasion</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="business">Business Dinner</option>
+                    <option value="family">Family Gathering</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Special Requests */}
+              <div className="mb-8">
+                <label htmlFor="message" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
+                  Special Requests
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors resize-none"
+                  placeholder="Any dietary restrictions or special arrangements?"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Submitting...' : '📅 Confirm Booking'}
+              </motion.button>
+
+              {/* Success Message */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-6 p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold"
+                >
+                  ✓ Booking request submitted successfully! We&apos;ll contact you shortly.
+                </motion.div>
+              )}
+            </form>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: '📞',
+                title: 'Contact Us',
+                desc: 'Call us for immediate booking or inquiries',
+                action: '+92-XXX-XXXXXXX'
+              },
+              {
+                icon: '⏰',
+                title: 'Operating Hours',
+                desc: 'Open daily from 11:00 AM to 11:00 PM',
+                action: 'View Schedule'
+              },
+              {
+                icon: '💳',
+                title: 'Payment Options',
+                desc: 'We accept all major credit cards and cash',
+                action: 'Learn More'
+              },
+            ].map((info, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <div className="text-center p-6 rounded-2xl border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] transition-colors">
+                  <div className="text-5xl mb-4">{info.icon}</div>
+                  <h3 className="text-xl font-bold text-[rgb(var(--primary))] mb-2">
+                    {info.title}
+                  </h3>
+                  <p className="text-[rgb(var(--muted-foreground))] mb-3">
+                    {info.desc}
+                  </p>
+                  <p className="font-semibold text-[rgb(var(--primary))]">
+                    {info.action}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
