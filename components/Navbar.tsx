@@ -88,7 +88,7 @@ export default function Navbar() {
             >
               <Link
                 href="/booking"
-                className="ml-4 px-5 xl:px-6 py-2.5 xl:py-3 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm xl:text-base tracking-wide"
+                className="ml-4 px-5 xl:px-6 py-2.5 xl:py-3 bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm xl:text-base tracking-wide"
               >
                 Book Now
               </Link>
@@ -102,17 +102,17 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`w-6 sm:w-7 h-0.5 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] transition-all duration-300 rounded-full ${
+              className={`w-6 sm:w-7 h-0.5 bg-[rgb(var(--primary))] transition-all duration-300 rounded-full ${
                 isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             />
             <span
-              className={`w-6 sm:w-7 h-0.5 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] transition-all duration-300 rounded-full ${
+              className={`w-6 sm:w-7 h-0.5 bg-[rgb(var(--primary))] transition-all duration-300 rounded-full ${
                 isMobileMenuOpen ? 'opacity-0' : ''
               }`}
             />
             <span
-              className={`w-6 sm:w-7 h-0.5 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] transition-all duration-300 rounded-full ${
+              className={`w-6 sm:w-7 h-0.5 bg-[rgb(var(--primary))] transition-all duration-300 rounded-full ${
                 isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             />
@@ -141,9 +141,9 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-xl hover:bg-gradient-to-r hover:from-[rgb(var(--primary))]/5 hover:to-[rgb(var(--secondary))]/5 transition-all duration-300 group"
+                    className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-xl hover:bg-[rgb(var(--muted))] transition-all duration-300 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] group-hover:scale-150 transition-transform" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--primary))] group-hover:scale-150 transition-transform" />
                     <span className="text-base sm:text-lg font-medium text-[rgb(var(--foreground))] group-hover:text-[rgb(var(--primary))] transition-colors">
                       {link.label}
                     </span>
@@ -160,7 +160,7 @@ export default function Navbar() {
                 <Link
                   href="/booking"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full px-6 py-3 sm:py-4 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center hover:scale-[1.02]"
+                  className="block w-full px-6 py-3 sm:py-4 bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center hover:scale-[1.02]"
                 >
                   Book a Table Now
                 </Link>

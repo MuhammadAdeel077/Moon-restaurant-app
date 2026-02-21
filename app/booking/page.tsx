@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import Icon from '@/components/Icon';
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ export default function BookingPage() {
   return (
     <div className="pt-20">
       {/* Header Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full blur-3xl" />
         </div>
@@ -66,10 +67,10 @@ export default function BookingPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6">
               {[
-                { icon: '👥', text: 'Group Dining' },
-                { icon: '🎉', text: 'Special Events' },
-                { icon: '🍽️', text: 'Custom Menus' },
-                { icon: '⭐', text: 'Premium Service' },
+                { icon: 'users', text: 'Group Dining' },
+                { icon: 'party', text: 'Special Events' },
+                { icon: 'restaurant', text: 'Custom Menus' },
+                { icon: 'star', text: 'Premium Service' },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -78,7 +79,7 @@ export default function BookingPage() {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full text-sm sm:text-base"
                 >
-                  <span className="text-xl sm:text-2xl">{feature.icon}</span>
+                  <Icon name={feature.icon} size={20} className="text-white" />
                   <span className="font-medium">{feature.text}</span>
                 </motion.div>
               ))}
@@ -88,7 +89,7 @@ export default function BookingPage() {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12">
@@ -261,9 +262,14 @@ export default function BookingPage() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isSubmitting ? 'Submitting...' : '📅 Confirm Booking'}
+                {isSubmitting ? 'Submitting...' : (
+                  <>
+                    <Icon name="calendar" size={20} />
+                    <span>Confirm Booking</span>
+                  </>
+                )}
               </motion.button>
 
               {/* Success Message */}
@@ -271,9 +277,10 @@ export default function BookingPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base"
+                  className="mt-4 sm:mt-6 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base flex items-center justify-center gap-2"
                 >
-                  ✓ Booking request submitted successfully! We&apos;ll contact you shortly.
+                  <Icon name="check" size={20} />
+                  <span>Booking request submitted successfully! We&apos;ll contact you shortly.</span>
                 </motion.div>
               )}
             </form>
@@ -287,19 +294,19 @@ export default function BookingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                icon: '📞',
+                icon: 'phone',
                 title: 'Contact Us',
                 desc: 'Call us for immediate booking or inquiries',
                 action: '+92-XXX-XXXXXXX'
               },
               {
-                icon: '⏰',
+                icon: 'clock',
                 title: 'Operating Hours',
                 desc: 'Open daily from 11:00 AM to 11:00 PM',
                 action: 'View Schedule'
               },
               {
-                icon: '💳',
+                icon: 'payment',
                 title: 'Payment Options',
                 desc: 'We accept all major credit cards and cash',
                 action: 'Learn More'
@@ -307,7 +314,9 @@ export default function BookingPage() {
             ].map((info, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <div className="text-center p-5 sm:p-6 rounded-2xl border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] transition-all duration-300 hover:shadow-lg">
-                  <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{info.icon}</div>
+                  <div className="text-[rgb(var(--primary))] mb-3 sm:mb-4 flex justify-center">
+                    <Icon name={info.icon} size={48} />
+                  </div>
                   <h3 className="text-lg sm:text-xl font-bold text-[rgb(var(--primary))] mb-2">
                     {info.title}
                   </h3>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import Icon from '@/components/Icon';
 
 const reviews = [
   {
@@ -12,7 +13,7 @@ const reviews = [
     date: 'January 15, 2026',
     branch: 'Naran',
     comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering. Highly recommended!',
-    avatar: '👨'
+    avatar: 'AH'
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const reviews = [
     date: 'January 10, 2026',
     branch: 'Besar',
     comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location. Will definitely come back!',
-    avatar: '👩'
+    avatar: 'FK'
   },
   {
     id: 3,
@@ -30,7 +31,7 @@ const reviews = [
     date: 'January 5, 2026',
     branch: 'Naran',
     comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations. The mountain view is a bonus!',
-    avatar: '🧑'
+    avatar: 'AR'
   },
   {
     id: 4,
@@ -39,7 +40,7 @@ const reviews = [
     date: 'December 28, 2025',
     branch: 'Besar',
     comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable. The service could be a bit faster during peak hours.',
-    avatar: '👩'
+    avatar: 'SA'
   },
   {
     id: 5,
@@ -48,7 +49,7 @@ const reviews = [
     date: 'December 20, 2025',
     branch: 'Naran',
     comment: 'Outstanding! From appetizers to desserts, everything was perfect. The chef really knows how to bring out authentic flavors.',
-    avatar: '👨'
+    avatar: 'UM'
   },
   {
     id: 6,
@@ -57,7 +58,7 @@ const reviews = [
     date: 'December 15, 2025',
     branch: 'Besar',
     comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our special requests. Thank you!',
-    avatar: '👩'
+    avatar: 'AT'
   },
 ];
 
@@ -90,7 +91,7 @@ export default function ReviewsPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
         </div>
@@ -109,9 +110,7 @@ export default function ReviewsPage() {
               <div className="text-5xl sm:text-6xl lg:text-7xl font-bold">{averageRating}</div>
               <div className="flex gap-1 text-2xl sm:text-3xl">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className={i < Math.round(Number(averageRating)) ? 'text-yellow-300' : 'text-white/30'}>
-                    ⭐
-                  </span>
+                  <Icon key={i} name="star" size={32} className={i < Math.round(Number(averageRating)) ? 'text-yellow-300' : 'text-white/30'} />
                 ))}
               </div>
               <p className="text-sm sm:text-base lg:text-lg text-white/80">Based on {reviews.length} reviews</p>
@@ -121,7 +120,7 @@ export default function ReviewsPage() {
       </section>
 
       {/* Reviews Grid */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-8 sm:mb-10 lg:mb-12">
@@ -138,7 +137,7 @@ export default function ReviewsPage() {
                 >
                   <div className="flex items-start justify-between mb-3 sm:mb-4 gap-2">
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] rounded-full flex items-center justify-center text-xl sm:text-2xl flex-shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--primary))] rounded-full flex items-center justify-center text-sm sm:text-base font-bold text-white flex-shrink-0">
                         {review.avatar}
                       </div>
                       <div className="min-w-0">
@@ -157,9 +156,7 @@ export default function ReviewsPage() {
 
                   <div className="flex gap-0.5 sm:gap-1 mb-2 sm:mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`text-base sm:text-xl ${i < review.rating ? 'text-yellow-500' : 'text-gray-300'}`}>
-                        ⭐
-                      </span>
+                      <Icon key={i} name="star" size={20} className={i < review.rating ? 'text-yellow-500' : 'text-gray-300'} />
                     ))}
                   </div>
 
@@ -184,7 +181,7 @@ export default function ReviewsPage() {
               We value your feedback and would love to hear about your visit
             </p>
 
-            <form onSubmit={handleSubmit} className="bg-gradient-to-br from-[rgb(var(--muted))] to-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-[rgb(var(--border))]">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 border border-[rgb(var(--border))]">
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[rgb(var(--foreground))] mb-2">
@@ -244,11 +241,9 @@ export default function ReviewsPage() {
                       key={star}
                       type="button"
                       onClick={() => setFormData({ ...formData, rating: star })}
-                      className="text-3xl sm:text-4xl transition-transform hover:scale-125 focus:outline-none"
+                      className="transition-transform hover:scale-125 focus:outline-none"
                     >
-                      <span className={star <= formData.rating ? 'text-yellow-500' : 'text-gray-300'}>
-                        ⭐
-                      </span>
+                      <Icon name="star" size={32} className={star <= formData.rating ? 'text-yellow-500' : 'text-gray-300'} />
                     </button>
                   ))}
                 </div>
@@ -274,18 +269,24 @@ export default function ReviewsPage() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50"
+                className="w-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {isSubmitting ? 'Submitting...' : '⭐ Submit Review'}
+                {isSubmitting ? 'Submitting...' : (
+                  <>
+                    <Icon name="star" size={20} />
+                    <span>Submit Review</span>
+                  </>
+                )}
               </motion.button>
 
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-3 sm:mt-4 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base"
+                  className="mt-3 sm:mt-4 p-3 sm:p-4 bg-green-50 border-2 border-green-500 rounded-xl text-green-700 text-center font-semibold text-sm sm:text-base flex items-center justify-center gap-2"
                 >
-                  ✓ Thank you for your review! It will be published soon.
+                  <Icon name="check" size={20} />
+                  <span>Thank you for your review! It will be published soon.</span>
                 </motion.div>
               )}
             </form>

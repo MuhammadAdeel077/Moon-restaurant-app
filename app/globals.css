@@ -1,15 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Premium Restaurant Color Palette - Enhanced */
-  --primary: 20 83 45;         /* Rich Emerald Green */
-  --primary-light: 34 197 94;  /* Light Emerald */
-  --primary-dark: 15 64 35;    /* Dark Emerald */
-  --secondary: 217 119 6;      /* Luxurious Amber Gold */
-  --secondary-light: 251 191 36; /* Light Gold */
-  --secondary-dark: 180 83 9;  /* Dark Gold */
-  --accent: 239 68 68;         /* Vibrant Coral Red */
-  --accent-secondary: 251 146 60; /* Warm Sunset Orange */
+  /* Two-Color Premium Restaurant Palette */
+  --primary: 20 83 45;         /* Rich Emerald Green - Main Brand Color */
+  --secondary: 217 119 6;      /* Amber Gold - Accent Color */
   --background: 255 255 255;   /* Pure White */
   --foreground: 17 24 39;      /* Deep Slate */
   --card: 255 255 255;
@@ -18,12 +12,9 @@
   --muted-foreground: 107 114 128;
   --border: 229 231 235;
   --ring: 20 83 45;
-  --gold: 217 119 6;           /* Accent Gold */
-  --gold-light: 254 243 199;   /* Light Gold Background */
-  --success: 34 197 94;        /* Success Green */
-  --warning: 251 146 60;       /* Warning Orange */
-  --error: 239 68 68;          /* Error Red */
-  --info: 59 130 246;          /* Info Blue */
+  --success: 20 83 45;         /* Use primary for success */
+  --warning: 217 119 6;        /* Use secondary for warning */
+  --error: 220 38 38;          /* Error Red */
 }
 
 @theme inline {
@@ -64,13 +55,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgb(var(--primary)), rgb(var(--secondary)));
+  background: rgb(var(--primary));
   border-radius: 6px;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgb(var(--primary-dark)), rgb(var(--secondary-dark)));
+  background: rgb(var(--secondary));
 }
 
 /* Enhanced Animations */
@@ -275,51 +266,17 @@ html {
   box-shadow: 0 0 20px rgba(var(--primary), 0.4);
 }
 
-/* Gradient Animations */
-.gradient-animate {
-  background: linear-gradient(
-    270deg,
-    rgb(var(--primary)),
-    rgb(var(--secondary)),
-    rgb(var(--primary))
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
+/* Text Styles */
+.text-accent {
+  color: rgb(var(--primary));
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.bg-accent {
+  background-color: rgb(var(--primary));
 }
 
-/* Responsive Image Containers */
-.img-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-}
-
-.img-container img {
-  transition: transform 0.5s ease;
-}
-
-.img-container:hover img {
-  transform: scale(1.1);
-}
-
-/* Text Gradient */
-.text-gradient {
-  background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.bg-accent-secondary {
+  background-color: rgb(var(--secondary));
 }
 
 /* Glass Effect */

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Icon from '@/components/Icon';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -22,7 +23,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white">
+    <footer className="bg-[rgb(var(--primary))] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand Section */}
@@ -39,13 +40,13 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 sm:gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                <span className="text-lg sm:text-xl">📘</span>
+                <Icon name="facebook" size={20} className="text-white" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                <span className="text-lg sm:text-xl">📷</span>
+                <Icon name="instagram" size={20} className="text-white" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                <span className="text-lg sm:text-xl">🐦</span>
+                <Icon name="twitter" size={20} className="text-white" />
               </a>
             </div>
           </motion.div>

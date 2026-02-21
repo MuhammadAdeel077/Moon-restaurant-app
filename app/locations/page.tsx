@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import Icon from '@/components/Icon';
 
 const locations = [
   {
@@ -38,7 +39,7 @@ export default function LocationsPage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-10 left-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
@@ -61,7 +62,7 @@ export default function LocationsPage() {
         <section
           key={location.id}
           id={location.id}
-          className={`py-12 sm:py-16 lg:py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-gradient-to-b from-white to-[rgb(var(--muted))]'}`}
+          className={`py-12 sm:py-16 lg:py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-[rgb(var(--muted))]'}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
@@ -77,7 +78,7 @@ export default function LocationsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl sm:text-3xl">📍</span>
+                      <Icon name="location" size={24} className="text-white" />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl font-serif font-bold">{location.city}</h2>
@@ -106,7 +107,7 @@ export default function LocationsPage() {
                         transition={{ delay: i * 0.1 }}
                         className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 lg:px-4 py-2 bg-[rgb(var(--muted))] rounded-lg"
                       >
-                        <span className="text-green-600 font-bold text-sm sm:text-base">✓</span>
+                        <Icon name="check" size={16} className="text-green-600 flex-shrink-0" />
                         <span className="text-xs sm:text-sm font-medium text-[rgb(var(--foreground))]">
                           {feature}
                         </span>
@@ -117,14 +118,14 @@ export default function LocationsPage() {
                   {/* Contact Info */}
                   <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <span className="text-xl sm:text-2xl">📍</span>
+                      <Icon name="location" size={24} className="text-[rgb(var(--primary))] flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Address</p>
                         <p className="text-[rgb(var(--foreground))] text-sm sm:text-base">{location.address}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <span className="text-xl sm:text-2xl">📞</span>
+                      <Icon name="phone" size={24} className="text-[rgb(var(--primary))] flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Phone</p>
                         <a href={`tel:${location.phone}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors text-sm sm:text-base">
@@ -133,7 +134,7 @@ export default function LocationsPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <span className="text-xl sm:text-2xl">✉️</span>
+                      <Icon name="email" size={24} className="text-[rgb(var(--primary))] flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Email</p>
                         <a href={`mailto:${location.email}`} className="text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))] transition-colors text-sm sm:text-base break-all">
@@ -142,7 +143,7 @@ export default function LocationsPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <span className="text-xl sm:text-2xl">⏰</span>
+                      <Icon name="clock" size={24} className="text-[rgb(var(--primary))] flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-semibold text-[rgb(var(--primary))] text-sm sm:text-base">Hours</p>
                         <p className="text-[rgb(var(--foreground))] text-sm sm:text-base">{location.hours}</p>
@@ -154,17 +155,19 @@ export default function LocationsPage() {
                   <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                     <Link
                       href="/booking"
-                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-center text-sm sm:text-base"
+                      className="px-6 py-3 bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
                     >
-                      📅 Book a Table
+                      <Icon name="calendar" size={20} />
+                      <span>Book a Table</span>
                     </Link>
                     <a
                       href={`https://www.google.com/maps/search/${encodeURIComponent(location.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 text-center text-sm sm:text-base"
+                      className="px-6 py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 flex items-center gap-2"
                     >
-                      🗺️ Get Directions
+                      <Icon name="location" size={20} />
+                      <span>Get Directions</span>
                     </a>
                   </div>
                 </div>
@@ -191,9 +194,8 @@ export default function LocationsPage() {
       ))}
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal>
+      <section className="py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">\n          <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-4 sm:mb-6">
               Can&apos;t Decide Which Location?
             </h2>
@@ -203,15 +205,17 @@ export default function LocationsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/booking"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 bg-white text-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] hover:text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
-                📅 Make a Reservation
+                <Icon name="calendar" size={24} />
+                <span>Make a Reservation</span>
               </Link>
               <a
                 href="tel:+92XXXXXXXXXX"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-base sm:text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
-                📞 Call Us Now
+                <Icon name="phone" size={24} />
+                <span>Call Us Now</span>
               </a>
             </div>
           </ScrollReveal>

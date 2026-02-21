@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import Icon from '@/components/Icon';
 
 export default function Home() {
   return (
@@ -38,7 +39,7 @@ export default function Home() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 mb-8 sm:mb-10 lg:mb-12 font-light tracking-wide px-4"
             >
-              Where Taste Meets the Moonlight ✨
+              Where Taste Meets the Moonlight
             </motion.p>
             
             <motion.div
@@ -49,15 +50,17 @@ export default function Home() {
             >
               <Link
                 href="/locations"
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-2xl hover:shadow-[rgb(var(--primary))/50] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-2xl hover:shadow-[rgb(var(--primary))/50] hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
               >
-                <span className="relative z-10">📍 Locate Us</span>
+                <Icon name="location" size={20} />
+                <span>Locate Us</span>
               </Link>
               <Link
                 href="/booking"
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-semibold text-base sm:text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-semibold text-base sm:text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
               >
-                <span className="relative z-10">📅 Make Booking</span>
+                <Icon name="calendar" size={20} />
+                <span>Make Booking</span>
               </Link>
             </motion.div>
           </motion.div>
@@ -73,15 +76,15 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-            className="text-white text-3xl sm:text-4xl"
+            className="text-white"
           >
-            ↓
+            <Icon name="down-arrow" size={40} />
           </motion.div>
         </motion.div>
       </section>
 
       {/* Branches Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
@@ -106,7 +109,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl sm:text-2xl">📍</span>
+                      <Icon name="location" size={20} />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-serif font-bold">Naran</h3>
@@ -118,7 +121,7 @@ export default function Home() {
                     Perfect for tourists and families seeking memorable dining experiences surrounded by mountains.
                   </p>
                   <div className="flex items-center gap-2 text-[rgb(var(--primary))] font-semibold text-sm sm:text-base">
-                    <span>📍</span>
+                    <Icon name="location" size={18} />
                     <span>Naran, Pakistan</span>
                   </div>
                 </div>
@@ -138,7 +141,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl sm:text-2xl">📍</span>
+                      <Icon name="location" size={20} />
                       <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Location</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-serif font-bold">Besar</h3>
@@ -150,7 +153,7 @@ export default function Home() {
                     Ideal for group celebrations, special occasions, and unforgettable moments.
                   </p>
                   <div className="flex items-center gap-2 text-[rgb(var(--primary))] font-semibold text-sm sm:text-base">
-                    <span>📍</span>
+                    <Icon name="location" size={18} />
                     <span>Besar, Pakistan</span>
                   </div>
                 </div>
@@ -171,19 +174,21 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
-              { icon: '🍽️', title: 'Authentic Cuisine', desc: 'Traditional Pakistani flavors prepared by expert chefs' },
-              { icon: '👨‍👩‍👧‍👦', title: 'Family Friendly', desc: 'Spacious dining areas perfect for family gatherings' },
-              { icon: '🎉', title: 'Group Bookings', desc: 'Special arrangements for celebrations and events' },
-              { icon: '⭐', title: 'Premium Quality', desc: 'Fresh ingredients and highest quality standards' },
-              { icon: '🏞️', title: 'Scenic Locations', desc: 'Beautiful ambiance in picturesque settings' },
-              { icon: '💯', title: 'Excellent Service', desc: 'Attentive staff dedicated to your satisfaction' },
+              { icon: 'restaurant', title: 'Authentic Cuisine', desc: 'Traditional Pakistani flavors prepared by expert chefs' },
+              { icon: 'family', title: 'Family Friendly', desc: 'Spacious dining areas perfect for family gatherings' },
+              { icon: 'party', title: 'Group Bookings', desc: 'Special arrangements for celebrations and events' },
+              { icon: 'star', title: 'Premium Quality', desc: 'Fresh ingredients and highest quality standards' },
+              { icon: 'landscape', title: 'Scenic Locations', desc: 'Beautiful ambiance in picturesque settings' },
+              { icon: 'award', title: 'Excellent Service', desc: 'Attentive staff dedicated to your satisfaction' },
             ].map((feature, index) => (
               <ScrollReveal key={index} delay={index * 0.1} direction="up">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[rgb(var(--muted))] to-white border border-[rgb(var(--border))] hover:shadow-xl transition-all duration-300"
+                  className="text-center p-6 sm:p-8 rounded-2xl bg-white border-2 border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{feature.icon}</div>
+                  <div className="text-[rgb(var(--primary))] mb-3 sm:mb-4 flex justify-center">
+                    <Icon name={feature.icon} size={48} />
+                  </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-[rgb(var(--primary))] mb-2 sm:mb-3">
                     {feature.title}
                   </h3>
@@ -198,7 +203,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 bg-[rgb(var(--primary))] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full blur-3xl" />
@@ -214,9 +219,10 @@ export default function Home() {
             </p>
             <Link
               href="/booking"
-              className="inline-block px-8 sm:px-10 py-4 sm:py-5 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-white text-[rgb(var(--primary))] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:bg-[rgb(var(--secondary))] hover:text-white transition-all duration-300 hover:scale-105"
             >
-              📅 Reserve Your Table Now
+              <Icon name="calendar" size={24} />
+              <span>Reserve Your Table Now</span>
             </Link>
           </ScrollReveal>
         </div>
