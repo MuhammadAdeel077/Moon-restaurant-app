@@ -12,7 +12,7 @@ const locations = [
     name: 'Naran Branch',
     address: 'Main Bazaar Road, Naran, Kaghan Valley',
     city: 'Naran',
-    phone: '+92-XXX-XXXXXXX',
+    phone: '+92 311 2932080',
     email: 'naran@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop',
@@ -25,7 +25,7 @@ const locations = [
     name: 'Besar Branch',
     address: 'Central Plaza, Besar City',
     city: 'Besar',
-    phone: '+92-XXX-XXXXXXX',
+    phone: '+92 331 2241322',
     email: 'besar@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
     image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop',
@@ -211,7 +211,7 @@ export default function LocationsPage() {
                 <span>Make a Reservation</span>
               </Link>
               <a
-                href="tel:+92XXXXXXXXXX"
+                href="tel:+923112932080"
                 className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <Icon name="phone" size={24} />

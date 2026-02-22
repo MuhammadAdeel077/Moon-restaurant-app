@@ -17,7 +17,8 @@ export default function Footer() {
     'Contact': [
       { label: 'Naran Branch', href: '/locations#naran' },
       { label: 'Besar Branch', href: '/locations#besar' },
-      { label: 'Phone: +92-XXX-XXXXXXX', href: 'tel:+92XXXXXXXXXX' },
+      { label: 'Phone: +92 311 2932080', href: 'tel:+923112932080' },
+      { label: 'Phone: +92 331 2241322', href: 'tel:+923312241322' },
       { label: 'Email: info@moonrestaurant.com', href: 'mailto:info@moonrestaurant.com' },
     ],
   };

@@ -180,7 +180,7 @@ export default function BookingPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
-                    placeholder="+92-XXX-XXXXXXX"
+                    placeholder="+92 311 2932080"
                   />
                 </div>
 
@@ -319,8 +319,8 @@ export default function BookingPage() {
               {
                 icon: 'phone',
                 title: 'Contact Us',
-                desc: 'Call us for immediate booking or inquiries',
-                action: '+92-XXX-XXXXXXX'
+                desc: 'Naran: +92 311 2932080 | Besar: +92 331 2241322',
+                action: 'Call Now'
               },
               {
                 icon: 'clock',

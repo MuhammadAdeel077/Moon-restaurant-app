@@ -49,15 +49,8 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
             >
               <Link
-                href="/locations"
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-2xl hover:shadow-[rgb(var(--primary))/50] hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
-              >
-                <Icon name="location" size={20} />
-                <span>Locate Us</span>
-              </Link>
-              <Link
                 href="/booking"
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-semibold text-base sm:text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-2xl hover:shadow-[rgb(var(--primary))/50] hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
               >
                 <Icon name="calendar" size={20} />
                 <span>Make Booking</span>
