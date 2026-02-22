@@ -247,9 +247,9 @@ export default function BookingPage() {
                     value={formData.guests}
                     onChange={handleChange}
                     required
-                    min="1"
+                    min="10"
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[rgb(var(--border))] focus:border-[rgb(var(--primary))] focus:outline-none transition-colors text-sm sm:text-base"
-                    placeholder="5"
+                    placeholder="10"
                   />
                 </div>
 
