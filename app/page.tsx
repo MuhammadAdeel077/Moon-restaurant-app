@@ -94,7 +94,7 @@ export default function Home() {
               <div className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-64 sm:h-80 overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop"
+                    src="/assets/images/besar.jpeg"
                     alt="Naran Branch"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -126,7 +126,7 @@ export default function Home() {
               <div className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-64 sm:h-80 overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop"
+                    src="/assets/images/naran.jpeg"
                     alt="Besar Branch"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -178,46 +178,39 @@ export default function Home() {
           <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             {[
               { 
-                icon: 'restaurant', 
-                title: 'Authentic Cuisine', 
-                desc: 'Traditional Pakistani flavors prepared by expert chefs',
-                longDesc: 'Experience the rich tapestry of Pakistani culinary traditions, where every dish tells a story of generations of culinary mastery. Our chefs bring decades of expertise to create authentic recipes that transport you to the heart of Pakistan.',
+                icon: 'party', 
+                title: 'Perfect Gathering Place', 
+                desc: 'Bringing families and friends together',
+                longDesc: 'Moon Restaurant is the perfect destination for gatherings of all kinds. Whether it\'s a family reunion, friends catching up, or special celebrations, our welcoming atmosphere and spacious seating create the ideal setting for creating cherished memories together.',
                 image: '/assets/images/1.jpeg'
               },
               { 
-                icon: 'family', 
-                title: 'Family Friendly', 
-                desc: 'Spacious dining areas perfect for family gatherings',
-                longDesc: 'Create lasting memories with your loved ones in our warm and welcoming atmosphere. Our spacious interiors are designed to accommodate families of all sizes, ensuring comfort and joy for every generation.',
+                icon: 'restaurant', 
+                title: 'International Experience', 
+                desc: 'Welcoming guests from around the world',
+                longDesc: 'We take pride in serving international visitors who seek authentic Pakistani cuisine. Foreigners and tourists consistently choose Moon Restaurant for our exceptional hospitality, delicious meals, and the unique cultural dining experience that makes their journey through Pakistan truly memorable.',
                 image: '/assets/images/2.jpeg'
               },
               { 
-                icon: 'party', 
-                title: 'Group Bookings', 
-                desc: 'Special arrangements for celebrations and events',
-                longDesc: 'From intimate gatherings to grand celebrations, we specialize in making your special occasions truly memorable. Our dedicated events team works closely with you to customize every detail of your perfect event.',
+                icon: 'star', 
+                title: 'Best Cuisine in Naran', 
+                desc: 'Authentic flavors in the heart of the mountains',
+                longDesc: 'Experience the finest Pakistani cuisine in the heart of Naran. Our expertly crafted dishes showcase traditional recipes passed down through generations, prepared with the freshest ingredients and authentic spices that capture the true essence of Pakistani gastronomy.',
                 image: '/assets/images/3.jpeg'
               },
               { 
-                icon: 'star', 
-                title: 'Premium Quality', 
-                desc: 'Fresh ingredients and highest quality standards',
-                longDesc: 'We source only the finest ingredients, ensuring each plate exceeds expectations. Our commitment to quality means rigorous standards from kitchen to table, delivering excellence in every bite.',
+                icon: 'landscape', 
+                title: 'Breathtaking Mountain Views', 
+                desc: 'Dine surrounded by scenic natural beauty',
+                longDesc: 'Enjoy your meal with stunning panoramic views of majestic mountains and pristine landscapes. Our strategic location offers an unparalleled dining experience where spectacular scenery complements exceptional cuisine, making every visit a feast for both the palate and the eyes.',
                 image: '/assets/images/4.jpeg'
               },
               { 
-                icon: 'landscape', 
-                title: 'Scenic Locations', 
-                desc: 'Beautiful ambiance in picturesque settings',
-                longDesc: 'Dine amidst breathtaking natural beauty that enhances every meal. Our strategically chosen locations offer stunning mountain views and serene surroundings that make dining an unforgettable experience.',
-                image: '/assets/images/5.jpeg'
-              },
-              { 
                 icon: 'award', 
-                title: 'Excellent Service', 
-                desc: 'Attentive staff dedicated to your satisfaction',
-                longDesc: 'Our hospitality is legendary—warm, professional, and always attentive to your needs. Every team member is committed to ensuring your dining experience exceeds expectations from the moment you arrive.',
-                image: '/assets/images/1.jpeg'
+                title: 'Luxury & Comfort', 
+                desc: 'Premium amenities with convenient parking',
+                longDesc: 'Experience luxury at its finest with our premium facilities designed for your ultimate comfort. From elegant interiors and plush seating to ample secure parking space, every detail ensures a hassle-free and sophisticated dining experience that reflects our commitment to excellence.',
+                image: '/assets/images/5.jpeg'
               },
             ].map((feature, index) => {
               const isEven = index % 2 === 0;

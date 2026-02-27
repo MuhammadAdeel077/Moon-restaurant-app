@@ -15,7 +15,7 @@ const locations = [
     phone: '+92 311 2932080',
     email: 'naran@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop',
+    image: 'assets/images/naran.jpeg',
     description: 'Nestled in the heart of Naran, our flagship restaurant offers breathtaking mountain views and authentic Pakistani cuisine. Perfect for tourists exploring the Kaghan Valley.',
     features: ['Mountain View', 'Tourist Friendly', 'Family Dining', 'Parking Available'],
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d73.65!3d34.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAwLjAiTiA3M8KwMzknMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890'
@@ -28,7 +28,7 @@ const locations = [
     phone: '+92 331 2241322',
     email: 'besar@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop',
+    image: 'assets/images/besar.jpeg',
     description: 'Our modern Besar location combines elegant ambiance with traditional flavors. Ideal for special occasions, business dinners, and group celebrations.',
     features: ['Event Space', 'VIP Rooms', 'Business Friendly', 'Valet Parking'],
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d73.65!3d34.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAwLjAiTiA3M8KwMzknMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890'
