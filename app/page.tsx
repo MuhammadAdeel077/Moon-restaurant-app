@@ -191,6 +191,7 @@ export default function Home() {
                 longDesc: 'We take pride in serving international visitors who seek authentic Pakistani cuisine. Foreigners and tourists consistently choose Moon Restaurant for our exceptional hospitality, delicious meals, and the unique cultural dining experience that makes their journey through Pakistan truly memorable.',
                 image: '/assets/images/2.jpeg'
               },
+
               { 
                 icon: 'star', 
                 title: 'Best Cuisine in Naran', 
